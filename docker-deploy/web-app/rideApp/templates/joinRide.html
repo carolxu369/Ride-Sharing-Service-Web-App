@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join A Ride</title>
+</head>
+
+<body>
+    <h1 align="center"> Join Ride Now!</h1>
+    <form action="/joinRide" method="post">
+        {% csrf_token %}
+        <table width="600" align="center">
+            <tr>
+                <td>Destination</td>
+                <td><input type="text" , name="des"></td>
+            </tr>
+            <p style="color:red;">{{errors.des.0}}</p>
+            <tr>
+                <td>Arrival time &nbsp&nbsp&nbsp&nbsp<input type="datetime-local" , name="ealiest_time", class="form-control"> 
+                    &nbsp&nbsp&nbsp&nbspto</td>
+                <td> <input type="datetime-local" , name="latest_time", class="form-control"></td>
+            </tr>
+            <p style="color:red;">{{errors.ealiest_time.0}}</p>
+            <p style="color:red;">{{errors.latest_time.0}}</p>
+            <tr>
+                <td>Passenger number</td>
+                <td><input type="text" , name="passenger_number"></td>
+            </tr>
+            <p style="color:red;">{{errors.passenger_number.0}}</p>
+    
+        </table>
+        <p align="center"> <input type="submit" , value="Submit"> </p>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register As A Driver</title>
+</head>
+<body>
+    <h1 align="center">
+        Want To Be A Driver
+        <p>Register Now!</p>
+    </h1>
+    <form action="/reg_driver" method="post">
+        {% csrf_token %}
+        <table width="600" align="center">
+
+            <tr>
+                <td>Your Name</td>
+                <td><input type="text" , name="driver_name"></td>
+            </tr>
+            <p style="color:red;">{{ errors.driver_name.0}}</p>
+            <tr>
+                <td>Vehicle Type</td>
+                <td><input type="text" , name="vehicle_type"></td>
+            </tr>
+            <p style="color:red;">{{ errors.vehicle_type.0}}</p>
+            <tr>
+                <td>License Plate Number</td>
+                <td><input type="text" , name="lpn"></td>
+            </tr>
+            <p style="color:red;">{{ errors.lpn.0}}</p>
+            <tr>
+                <td>Max Number of Passengers</td>
+                <td><input type="text" , name="max_passenger"></td>
+            </tr>
+            <p style="color:red;">{{ errors.max_passenger.0}}</p>
+            <tr>
+                <td>Special Vehicle Information</td>
+                <td><input type="text" , name="special_info"></td>
+            </tr>
+        </table>
+        <p align="center"> <input type="submit" , value="Submit"> </p>
+    </form>
+</body>
+
+</html>

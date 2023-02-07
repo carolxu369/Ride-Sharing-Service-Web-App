@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Your Ride</title>
+</head>
+
+<body>
+    {% if version == 1 %}
+    <h1 align="center"> Modify Your Ride </h1>
+    <h4 align="center"> Note: you need to enter everything even the field is unchanged </h4>
+    <form method="post">
+        {% csrf_token %}
+        <table width="600" align="center">
+            <tr>
+                <td>Destination</td>
+                <td><input type="text" , name="des"></td>
+            </tr>
+            <p style="color:red;">{{ errors.des.0}}</p>
+            <tr>
+                <td>Arrival time</td>
+                <td><input type="datetime-local" , name="arrival_time", class="form-control"></td>
+            </tr>
+            <p style="color:red;">{{errors.arrival_time.0}}</p>
+            <tr>
+                <td>Passenger number</td>
+                <td><input type="text" , name="passenger_number"></td>
+            </tr>
+            <p style="color:red;">{{ errors.passenger_number.0}}</p>
+            <tr>
+                <td>Vehicle type</td>
+                <td><input type="text" , name="vehicle_type"></td>
+            </tr>
+            <p style="color:red;">{{ errors.vehicle_type.0}}</p>
+            <tr>
+                <td><input type="radio", name ="is_share", value="True"> share</td>
+                <td><input type="radio", name ="is_share", value="False"> no share</td>
+            </tr>
+            <p style="color:red;">{{ errors.is_share.0}}</p>
+            <tr>
+                <td>Special request(optional)</td>
+                <td><input type="text" , name="special_request"></td>
+            </tr>
+        </table>
+        <p align="center"> <input type="submit" , value="Submit"> </p>
+    </form>
+
+    {% elif version == 2 %}
+    <table width="600" align="center">
+        <tr>
+            <td>The ride is not open and you cannot edit the ride.</td>
+        </tr>
+        <tr>
+            <td> <a href="/ongoing_ride"> Click here to go back to your view page</a> </td>
+        </tr>
+    </table>
+
+    {% elif version == 3 %}
+    <table width="600" align="center">
+        <tr>
+            <td>You are not the owner of the ride and cannot edit the ride.</td>
+        </tr>
+        <tr>
+            <td> <a href="/ongoing_ride"> Click here to go back to your view page</a> </td>
+        </tr>
+    </table>
+
+    {% endif %}
+
+</body>
+
+</html>

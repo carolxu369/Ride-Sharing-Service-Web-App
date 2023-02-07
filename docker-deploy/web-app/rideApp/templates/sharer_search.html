@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open rides</title>
+</head>
+
+<body>
+    {% if is_exist == 1 %}
+    <h1 align="center"> Please choose a ride to join!</h1>
+    <table width="400" align="center" height="249" border="1" cellspacing="0">
+        <tr>
+            <th>ride id</th>
+            <th>owner's name</th>
+            <th>arrival time</th>
+        </tr>
+        {% for ride in rides %}
+        <tr>
+            <td>{{ride.id}}</td>
+            <td>{{ride.owner.username}}</td>
+            <td>{{ride.arrival_time}}</td>
+        </tr>
+        {% endfor%}
+    </table>
+    
+    <form action="/sharer_search" method="post" align="center">
+        {% csrf_token %}
+        Choose
+        <select name="ride_id">
+            {% for ride in rides %}
+            <option value='{{ ride.id }}'>{{ ride.id }}</option>
+            {% endfor %}
+        </select>
+        <p> <input type="submit" , value="Submit"> </p>
+    </form>
+    {% elif is_exist == 0 %}
+    <h1 align="center"> Sorry, have no available ride to join!</h1>
+    {% endif %}
+</body>
+
+</html>

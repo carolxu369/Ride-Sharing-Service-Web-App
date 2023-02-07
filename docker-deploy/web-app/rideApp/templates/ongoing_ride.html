@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ongoing rides</title>
+</head>
+
+<body>
+    {% if is_exist == 1 %}
+    <h1 align="center"> All ongoing rides:</h1>
+    <form action="/sharer_search" method="post" align="center"></form>
+    <table width="400" align="center" height="249" border="1" cellspacing="0">
+        <tr>
+            <th>ride id</th>
+            <th>destination</th>
+            <th>status</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Complete</th>
+        </tr>
+        {% for ride in rides %}
+        <tr>
+            <td>{{ride.id}}</td>
+            <td>{{ride.dest_addr}}</td>
+            <td>{{ride.get_status_display}}</td>
+            <td>  <a href="/view_ride/{{ride.id}}"> View</a>  </td>
+            <td>  <a href="/edit_ride/{{ride.id}}"> Edit</a>  </td>
+            <td>  <a href="/complete_ride/{{ride.id}}"> Complete</a>  </td>
+        </tr>
+        {% endfor%}
+    </table>
+    </form>
+    {% elif is_exist == 0 %}
+    <h1 align="center"> Sorry, have no ongoing ride now!</h1>
+    {% endif %}
+</body>
+
+</html>

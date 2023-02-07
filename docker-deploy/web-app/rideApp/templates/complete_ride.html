@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Ride</title>
+</head>
+
+<body>
+    {% if version == 1 %}
+    <table width="600" align="center">
+        <tr>
+            <td>You have successfully completed the ride.</td>
+        </tr>
+        <tr>
+            <td> <a href="/driver_main"> Click here to go back to your main page</a> </td>
+        </tr>
+    </table>
+
+    {% elif version == 2 %}
+    <table width="600" align="center">
+        <tr>
+            <td>You cannot complete the ride. The reason is one of the followings.</td>
+        </tr>
+        <tr>
+            <td>1. You are not the driver of the ride.</td>
+        </tr>
+        <tr>
+            <td>2. The ride is still open and not confirmed.</td>
+        </tr>
+        <tr>
+            <td>3. The ride has already been completed.</td>
+        </tr>
+        <tr>
+            <td> <a href="/ongoing_ride"> Click here to go back to your view page</a> </td>
+        </tr>
+    </table>
+
+    {% endif %}
+
+</body>
+
+</html>
